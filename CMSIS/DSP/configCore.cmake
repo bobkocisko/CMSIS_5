@@ -35,13 +35,14 @@ function(configcore PROJECTNAME ROOT)
   # Going Rogue!
   if (ARM_CPU  MATCHES  "^cortex-a76.cortex-a55$" )
     target_include_directories(${PROJECTNAME} PUBLIC "${ROOT}/CMSIS/Core_A/Include")
+    target_compile_definitions(${PROJECTNAME} PRIVATE ARM_MATH_DSP) 
     SET(CORTEXM OFF)
     SET(CORTEXA ON)
     SET(CORTEXR OFF)
     SET(HARDFP OFF)
     SET(LITTLEENDIAN ON)
     SET(COREID ARMCA76_55 PARENT_SCOPE)
-    cmake_print_variables(CORTEXM HARDFP LITTLEENDIAN)
+    # cmake_print_variables(CORTEXM HARDFP LITTLEENDIAN)
   endif()
 
   # CORTEX-A32
