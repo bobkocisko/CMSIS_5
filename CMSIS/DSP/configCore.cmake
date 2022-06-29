@@ -34,8 +34,7 @@ function(configcore PROJECTNAME ROOT)
 
   # Going Rogue!
   if (ARM_CPU  MATCHES  "^cortex-a76.cortex-a55$" )
-    target_include_directories(${PROJECTNAME} PUBLIC "${ROOT}/CMSIS/Core_A/Include")
-    target_compile_definitions(${PROJECTNAME} PRIVATE ARM_MATH_DSP) 
+    target_compile_definitions(${PROJECTNAME} PRIVATE __GNUC_PYTHON__) 
     SET(CORTEXM OFF)
     SET(CORTEXA ON)
     SET(CORTEXR OFF)
