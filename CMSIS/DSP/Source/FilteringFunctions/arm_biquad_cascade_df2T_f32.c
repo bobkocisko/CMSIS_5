@@ -309,20 +309,20 @@ void arm_biquad_cascade_df2T_f32(
       while (sample > 0U)
       {
          /* Read the input */
-         Xn1 = *pIn++;
+         in = *pIn++;
 
          /* y[n] = b0 * x[n] + d1 */
-         acc1 = (b0 * Xn1) + d1;
+         out = (b0 * in) + d1;
 
          /* Store the result in the accumulator in the destination buffer. */
-         *pOut++ = acc1;
+         *pOut++ = out;
 
          /* Every time after the output is computed state should be updated. */
          /* d1 = b1 * x[n] + a1 * y[n] + d2 */
-         d1 = ((b1 * Xn1) + (a1 * acc1)) + d2;
+         d1 = ((b1 * in) + (a1 * out)) + d2;
 
          /* d2 = b2 * x[n] + a2 * y[n] */
-         d2 = (b2 * Xn1) + (a2 * acc1);
+         d2 = (b2 * in) + (a2 * out);
 
          /* decrement the loop counter */
          sample--;
